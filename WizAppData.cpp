@@ -32,7 +32,11 @@ WizAppData::WizAppData()
 	errlevel=256;
 	sig.Printf("%s %s",APP_TITLE,APP_VERSION);
 	title=APP_TITLE;
-	wxInitAllImageHandlers();
+	// wxInitAllImageHandlers(); // png fails on cygwin
+	// so instead only init what we need:
+	wxImage::AddHandler(new wxBMPHandler);
+	wxImage::AddHandler(new wxXPMHandler);
+
 	bitmap=wxBitmap(wizapp_xpm);
 	icon=wxIcon(wxWizApp_xpm);
 	BuildInputEnvironment();
