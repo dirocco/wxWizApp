@@ -10,7 +10,7 @@
 ##############################################################
 
 CC = g++
-CXX = $(shell wx-config --cxx)
+CXX = $(shell ../../bin/wx-config --cxx)
 
 PROGRAM = wxWizApp
 
@@ -18,7 +18,7 @@ SOURCES:= $(wildcard *.cpp)
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
-LFLAGS = `wx-config --prefix=../.. --libs`
+LFLAGS = `../../bin/wx-config --prefix=../.. --libs`
 
 CFLAGS = -I../../include
 
@@ -27,7 +27,7 @@ CFLAGS = -I../../include
 .SUFFIXES:      .o .cpp
 
 .cpp.o :
-	$(CC) -c `wx-config --cxxflags` $(CFLAGS) -o $@ $<
+	$(CC) -c `../../bin/wx-config --cxxflags` $(CFLAGS) -o $@ $<
 
 $(PROGRAM): $(OBJECTS) 
 	$(CXX) -o $(PROGRAM) $(OBJECTS) $(CFLAGS) $(LFLAGS) 
