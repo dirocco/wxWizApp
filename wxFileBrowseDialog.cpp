@@ -19,6 +19,9 @@ wxFileBrowseDialog::wxFileBrowseDialog(WizAppData* data,bool BrowseForDir):wxWiz
 {
         /* Show file edit box and browse button */
 	m_BrowseForDir=BrowseForDir;
+	wxStaticText* text=(wxStaticText*)FindWindowById(ID_TEXT,this);
+	text->SetLabel(m_data->text);
+	text->Show();
 	wxTextCtrl* ctrl=(wxTextCtrl*)FindWindowById(ID_FILE,this);
 	ctrl->Show();
 	ctrl->SetValue(m_data->output);

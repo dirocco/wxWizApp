@@ -23,6 +23,9 @@ wxListDialog::wxListDialog(WizAppData* data,bool Multiple):wxWizBaseDlg(data)
 	int nritems;
 	int nrnuminits;
 	int nrstrinits;
+	wxStaticText* text=(wxStaticText*)FindWindowById(ID_TEXT,this);
+	text->SetLabel(m_data->text);
+	text->Show();
 
 	m_Multiple=Multiple;
 	if (m_Multiple)

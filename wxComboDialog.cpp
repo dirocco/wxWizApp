@@ -18,6 +18,9 @@ wxComboDialog::wxComboDialog(WizAppData* data):wxWizBaseDlg(data)
 {
         wxArrayString items;
         int nritems;
+		wxStaticText* text=(wxStaticText*)FindWindowById(ID_TEXT,this);
+		text->SetLabel(m_data->text);
+		text->Show();
         wxComboBox* box=(wxComboBox*)FindWindowById(ID_COMBO,this);
         /* First dissect the list */
         if (!m_data->fileinput.Length())

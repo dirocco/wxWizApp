@@ -16,6 +16,9 @@
 
 wxEditDialog::wxEditDialog(WizAppData* data,bool hasPassword):wxWizBaseDlg(data)
 {
+	wxStaticText* text=(wxStaticText*)FindWindowById(ID_TEXT,this);
+	text->SetLabel(m_data->text);
+	text->Show();
 	if (hasPassword)
 	{
 		m_editw=(wxTextCtrl*)FindWindowById(ID_EDITHIDDEN,this);

@@ -25,7 +25,7 @@ END_EVENT_TABLE()
 //////////////////////////////////////////////////////////////////////
 
 wxWizBaseDlg::wxWizBaseDlg(WizAppData* data):
-	wxDialog(NULL,-1,wxString("Dialog"))
+	wxDialog(NULL,-1,wxString("Dialog"),wxDefaultPosition,wxDefaultSize,wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP)
 {
 
 	m_data=data;
@@ -109,13 +109,14 @@ wxWizBaseDlg::wxWizBaseDlg(WizAppData* data):
 	win=new wxTextCtrl(this,ID_EDITHIDDEN,"",wxPoint(178,130),wxSize(273,23),wxTE_PASSWORD);
 	win->Hide();
 	//deal with sound here
-
+	Raise();
 }
 
 wxWizBaseDlg::~wxWizBaseDlg()
 {
 
 }
+
 
 void wxWizBaseDlg::OnNextButtonClick(wxCommandEvent& event)
 {

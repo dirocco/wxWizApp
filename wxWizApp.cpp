@@ -70,6 +70,7 @@ bool wxWizApp::OnInit()
 	        else
 		        return Usage();
 		}
+		flags |=wxSTAY_ON_TOP;
 		wxMessageDialog dlg(NULL,m_data.text,m_data.title,flags);
 		ret=dlg.ShowModal();
         switch (ret)
