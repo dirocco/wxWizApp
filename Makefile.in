@@ -1,0 +1,38 @@
+##############################################################
+# Name:        makefile for wxWizApp
+# Purpose:     
+# Author:      
+# Modified by: 
+# Created:     
+# RCS-ID:      
+# Copyright:   (C)2003 
+# Licence:     
+##############################################################
+
+CC = g++
+CXX = $(shell wx-config --cxx)
+
+PROGRAM = wxWizApp
+
+SOURCES:= $(wildcard *.cpp)
+
+OBJECTS = $(SOURCES:.cpp=.o)
+
+# LFLAGS = -L/usr/local/lib -pthread /usr/local/lib/libwx_gtk-2.4.a -L/usr/lib -L/usr/X11R6/lib /usr/lib/libgtk.a /usr/lib/libgdk.a -rdynamic /usr/lib/libgmodule.a /usr/lib/libgthread.a -lglib -lpthread -ldl -lXi -lXext -lX11 -lm -lpng -ljpeg -ltiff -lz -ldl -lm
+LFLAGS = `wx-config --prefix=../.. --libs`
+
+CFLAGS = -I../../include
+
+# implementation
+
+.SUFFIXES:      .o .cpp
+
+.cpp.o :
+	$(CC) -c `wx-config --cxxflags` $(CFLAGS) -o $@ $<
+
+$(PROGRAM): $(OBJECTS) 
+	$(CXX) -o $(PROGRAM) $(OBJECTS) $(CFLAGS) $(LFLAGS) 
+
+clean:
+	rm -f *.o $(PROGRAM)
+
