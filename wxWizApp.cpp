@@ -92,16 +92,9 @@ bool wxWizApp::OnInit()
 	{
 		//wizard page
         /* Handle wizard page things */
-		long type=wxBITMAP_TYPE_BMP;
-#ifndef _WINDOWS
-		type=wxBITMAP_TYPE_XPM;
-#endif
+		wxBitmapType type=wxBITMAP_TYPE_XPM;
 		if (m_data.bmp.Length()>0)
 			m_data.bitmap.LoadFile(m_data.bmp,type);
-		type=wxBITMAP_TYPE_ICO;
-#ifndef _WINDOWS
-		type=wxBITMAP_TYPE_XPM;
-#endif
 		if (m_data.ico.Length()>0)
 			m_data.icon.LoadFile(m_data.ico,type);
 
