@@ -12,6 +12,7 @@
 
 #include "wx/tokenzr.h"
 #include "wx/file.h"
+#include "wx/image.h"
 
 
 #include "defines.h"
@@ -29,8 +30,9 @@ WizAppData::WizAppData()
 	errlevel=256;
 	sig.Printf("%s %s",APP_TITLE,APP_VERSION);
 	title=APP_TITLE;
-	bitmap=wxBitmap("WIZAPP.xpm");
-	icon=wxIcon("wxWizApp.xpm");
+	wxInitAllImageHandlers();
+	bitmap=wxBitmap("WIZAPP.xpm",wxBITMAP_TYPE_XPM);
+	icon=wxIcon("wxWizApp.xpm",wxBITMAP_TYPE_XPM);
 	BuildInputEnvironment();
 	GetLabels();
 	GetFile();
