@@ -1,8 +1,0 @@
-/////////////////////////////////////////////////////////////////////////////
-
-wxWizApp.xpm				ICON	"res/wxWizApp.ico"
-WIZAPP.xpm				BITMAP	"res/wizapp.bmp"
-
-#include "wx/msw/wx.rc"	//Includes WX library default resources 
-
-
