@@ -41,6 +41,11 @@ wxWizApp::~wxWizApp()
 
 }
 
+int wxWizApp::MainLoop()
+{
+	return m_data.errlevel;
+}
+
 bool wxWizApp::OnInit()
 {
 	if (argc==1)
@@ -239,7 +244,7 @@ bool wxWizApp::OnInit()
 			file.Close();
 		}
 	}
-	return FALSE;;
+	return TRUE;;
 }
 
 int wxWizApp::OnExit()

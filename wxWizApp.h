@@ -17,6 +17,7 @@ public:
 	virtual ~wxWizApp();
     virtual bool OnInit();
 	virtual int OnExit();
+	virtual int MainLoop();
 
 protected:
 	bool Usage();
