@@ -14,6 +14,8 @@
 #include "wx/file.h"
 #include "wx/image.h"
 
+#include "WIZAPP.xpm"
+#include "wxWizApp.xpm"
 
 #include "defines.h"
 #include "WizAppData.h"
@@ -31,8 +33,8 @@ WizAppData::WizAppData()
 	sig.Printf("%s %s",APP_TITLE,APP_VERSION);
 	title=APP_TITLE;
 	wxInitAllImageHandlers();
-	bitmap=wxBitmap("WIZAPP.xpm",wxBITMAP_TYPE_XPM);
-	icon=wxIcon("wxWizApp.xpm",wxBITMAP_TYPE_XPM);
+	bitmap=wxBitmap(wizapp_xpm);
+	icon=wxIcon(wxWizApp_xpm);
 	BuildInputEnvironment();
 	GetLabels();
 	GetFile();
