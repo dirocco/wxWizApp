@@ -9,8 +9,6 @@
 
 #include "wx/statline.h"
 
-#include "resource.h"
-
 #include "wxWizBaseDlg.h"
 
 BEGIN_EVENT_TABLE(wxWizBaseDlg,wxDialog)
