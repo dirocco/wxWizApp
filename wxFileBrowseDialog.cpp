@@ -11,6 +11,8 @@
 
 #include "wxFileBrowseDialog.h"
 
+#include "wx/generic/dirdlgg.h"
+
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -38,7 +40,13 @@ void wxFileBrowseDialog::OnBrowseButtonClick(wxCommandEvent& event)
 {
 	if (m_BrowseForDir)
 	{
-		wxDirDialog dlg(this);
+		// pass some initial dir to wxDirDialog
+		wxString dirHome;
+		wxGetHomeDir(&dirHome);
+
+		m_data->input.Replace(wxString(m_data->listsep),"|");
+		wxDirDialog dlg(this, wxDirSelectorPromptStr, _T(""), wxDD_DEFAULT_STYLE & ~wxDD_NEW_DIR_BUTTON);
+		// wxGenericDirDialog dlg(this, wxDirSelectorPromptStr, _T(""));
 		if (dlg.ShowModal()==wxID_OK)
 		{
 			m_data->output=dlg.GetPath();

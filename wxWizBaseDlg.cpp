@@ -27,7 +27,7 @@ wxWizBaseDlg::wxWizBaseDlg(WizAppData* data):
 {
 
 	m_data=data;
-	wxFont fnt(8,wxDEFAULT,wxNORMAL,wxNORMAL,FALSE);
+	wxFont fnt(8,wxSWISS,wxNORMAL,wxNORMAL,FALSE);
 	SetFont(fnt);
 	wxWindow* win;
 	SetIcon(m_data->icon);
