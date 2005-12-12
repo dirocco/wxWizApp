@@ -18,9 +18,15 @@ SOURCES:= $(wildcard *.cpp)
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
-LFLAGS = `../../bin/wx-config --prefix=../.. --libs`
+LFLAGS = `../../bin/wx-config --prefix=../.. --libs` -lz
 
 CFLAGS = -I../../include
+
+ifeq ($(build_vendor),apple)
+MACBLESS = Rez -d __DARWIN__ -t APPL -d __WXMAC__ -i . Carbon.r -o 
+else
+MACBLESS = echo
+endif
 
 # implementation
 
@@ -31,6 +37,7 @@ CFLAGS = -I../../include
 
 $(PROGRAM): $(OBJECTS) 
 	$(CXX) -o $(PROGRAM) $(OBJECTS) $(CFLAGS) $(LFLAGS) 
+	$(MACBLESS) $(PROGRAM)
 
 clean:
 	rm -f *.o $(PROGRAM)
