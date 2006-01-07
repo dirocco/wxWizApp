@@ -1,0 +1,18 @@
+#!/bin/sh
+# force_fork v0.1 01-07-2005
+# by Robert Quattlebaum <darco@deepdarc.com>
+#
+# This tool will turn an executable which requires a resource
+# fork into an executable which doesn't.
+
+ditto -c -k $1 tmp.zip
+cat > $1 <<EOF
+#!/bin/sh
+# This file was generated with force_fork v0.1.
+# Editing it is not advisable.
+#
+openssl enc -base64 -d -out /tmp/temp.zip <<EOF
+EOF
+openssl enc -base64 < tmp.zip >> $1
+echo EOF >> $1
+echo 'ditto -x -k /tmp/temp.zip /tmp && /tmp/'$1' $*' >> $1

@@ -24,8 +24,10 @@ CFLAGS = -I../../include
 
 ifeq ($(build_vendor),apple)
 MACBLESS = Rez -d __DARWIN__ -t APPL -d __WXMAC__ -i . Carbon.r -o 
+FORCEFORK = ./force_fork
 else
 MACBLESS = echo
+FORCEFORK = echo
 endif
 
 # implementation
@@ -38,6 +40,7 @@ endif
 $(PROGRAM): $(OBJECTS) 
 	$(CXX) -o $(PROGRAM) $(OBJECTS) $(CFLAGS) $(LFLAGS) 
 	$(MACBLESS) $(PROGRAM)
+	$(FORCEFORK) $(PROGRAM)
 
 clean:
 	rm -f *.o $(PROGRAM)
