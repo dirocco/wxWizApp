@@ -11,11 +11,11 @@ cat > $1 <<EOF
 # This file was generated with force_fork v0.1.
 # Editing it is not advisable.
 #
-TEMPZIP="\`/usr/bin/mktemp /tmp/forceforkzip.XXXXXXXXXX\`"
+TEMPZIP="\`/usr/bin/mktemp ~/forceforkzip.XXXXXXXXXX\`"
 /usr/bin/openssl enc -base64 -d -out \$TEMPZIP <<EOF
 EOF
 /usr/bin/openssl enc -base64 < tmp.zip >> $1
 rm tmp.zip
 echo EOF >> $1
-echo '/usr/bin/ditto -x -k /tmp/temp.zip /tmp && "/tmp/'$1'" $*' >> $1
-echo '/bin/rm "$TEMPZIP" "/tmp/'$1'"' >> $1
+echo '/usr/bin/ditto -x -k "$TEMPZIP" ~ && ~/'$1' $*' >> $1
+echo '/bin/rm "$TEMPZIP" ~/'$1 >> $1
