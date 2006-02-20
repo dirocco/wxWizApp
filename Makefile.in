@@ -13,6 +13,7 @@ CC = g++
 CXX = $(shell ../../bin/wx-config --cxx)
 
 PROGRAM = wxWizApp
+RESCOMP = /Developer/Tools/Rez
 
 SOURCES:= $(wildcard *.cpp)
 
@@ -23,7 +24,7 @@ LFLAGS = `../../bin/wx-config --prefix=../.. --libs` -lz
 CFLAGS = -I../../include
 
 ifeq ($(build_vendor),apple)
-MACBLESS = Rez -d __DARWIN__ -t APPL -d __WXMAC__ -i . Carbon.r -o 
+MACBLESS = $(RESCOMP) -d __DARWIN__ -t APPL -d __WXMAC__ -i . Carbon.r -o 
 FORCEFORK = ./force_fork
 else
 MACBLESS = echo
