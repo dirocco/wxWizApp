@@ -9,6 +9,8 @@
 # Licence:     
 ##############################################################
 
+build_vendor = @build_vendor@
+
 CC = g++
 CXX = $(shell ../../bin/wx-config --cxx)
 
@@ -45,4 +47,3 @@ $(PROGRAM): $(OBJECTS)
 
 clean:
 	rm -f *.o $(PROGRAM)
-
