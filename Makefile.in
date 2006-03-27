@@ -40,7 +40,7 @@ endif
 .cpp.o :
 	$(CC) -c `../../bin/wx-config --cxxflags` $(CFLAGS) -o $@ $<
 
-$(PROGRAM): $(OBJECTS) 
+$(PROGRAM): $(OBJECTS) $(FORCEFORK)
 	$(CXX) -o $(PROGRAM) $(OBJECTS) $(CFLAGS) $(LFLAGS) 
 	$(MACBLESS) $(PROGRAM)
 	$(FORCEFORK) $(PROGRAM)
