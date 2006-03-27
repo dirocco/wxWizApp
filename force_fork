@@ -18,4 +18,6 @@ EOF
 rm tmp.zip
 echo EOF >> $1
 echo '/usr/bin/ditto -x -k "$TEMPZIP" ~ && ~/'$1' $*' >> $1
+echo 'RET=$?' >> $1
 echo '/bin/rm "$TEMPZIP" ~/'$1 >> $1
+echo 'exit $RET' >> $1
