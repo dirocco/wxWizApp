@@ -88,6 +88,9 @@
 /* Number of radio buttons and checkboxes in dialog */
 #define NUM_BUTTONS     10
 
+// bool wxGetEnv(const wxString& var, wxString *value)
+bool myWXGetEnv(const wxString& var, wxString *value);
+
 
 #endif
 

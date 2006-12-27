@@ -20,6 +20,30 @@
 #include "defines.h"
 #include "WizAppData.h"
 
+#include <stdlib.h> // getenv()
+bool myWXGetEnv(const wxString& var, wxString *value)
+{
+	// for wxWidgets built on cygwin, use the UNIX getevnv
+	// because cygwin seems to have stopped exporting windows
+	// compatible environments to cygwin apps (like wxWizApp built
+	// on cygwin)
+	// This should work fine on unix systems too
+
+	wxChar *p = getenv(var);
+	if(!p)
+		return false;
+
+	if(value)
+		*value = p;
+
+	fprintf(stderr, "Looking for <s> got <%s>\n", 
+			(char *)p);
+			// (char *)var, 
+
+	// return(0 != p);
+	return(true);
+}
+
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -54,43 +78,43 @@ void WizAppData::BuildInputEnvironment()
 	wxString prefix;
 	wxString tmp;
 
-    if (wxGetEnv(VAR_PREFIX, &prefix) == 0)
+    if (myWXGetEnv(VAR_PREFIX, &prefix) == 0)
         prefix = DEF_PREFIX;
 	
 	wxString var;
 	var.Printf("%s%s",prefix.c_str(),VAR_TEXT);
-	wxGetEnv(var,&text);
+	myWXGetEnv(var,&text);
 	var.Printf("%s%s",prefix.c_str(),VAR_TITLE);
-	wxGetEnv(var,&title);
+	myWXGetEnv(var,&title);
 	var.Printf("%s%s",prefix.c_str(),VAR_BMP);
-	wxGetEnv(var,&bmp);
+	myWXGetEnv(var,&bmp);
 	var.Printf("%s%s",prefix.c_str(),VAR_ICO);
-	wxGetEnv(var,&ico);
+	myWXGetEnv(var,&ico);
 	var.Printf("%s%s",prefix.c_str(),VAR_SIG);
-	wxGetEnv(var,&sig);
+	myWXGetEnv(var,&sig);
 	var.Printf("%s%s",prefix.c_str(),VAR_SOUND);
-	wxGetEnv(var,&sound);
+	myWXGetEnv(var,&sound);
 	var.Printf("%s%s",prefix.c_str(),VAR_FILE);
-	wxGetEnv(var,&file);
+	myWXGetEnv(var,&file);
 	var.Printf("%s%s",prefix.c_str(),VAR_INPUT);
-	wxGetEnv(var,&input);
+	myWXGetEnv(var,&input);
 	var.Printf("%s%s",prefix.c_str(),VAR_LABELS);
-	wxGetEnv(var,&labels);
+	myWXGetEnv(var,&labels);
 	var.Printf("%s%s",prefix.c_str(),VAR_OUTPUT);
-	wxGetEnv(var,&output);
+	myWXGetEnv(var,&output);
 	var.Printf("%s%s",prefix.c_str(),VAR_OUTNUM);
-	wxGetEnv(var,&outnum);
+	myWXGetEnv(var,&outnum);
 	var.Printf("%s%s",prefix.c_str(),VAR_BAT);
-	wxGetEnv(var,&bat);
+	myWXGetEnv(var,&bat);
 	var.Printf("%s%s",prefix.c_str(),VAR_LISTSEP);
-	wxGetEnv(var,&tmp);
+	myWXGetEnv(var,&tmp);
 	if (tmp.c_str()[0]=='\0')
 		listsep=DEF_LISTSEP;
 	else
 		listsep=tmp.c_str()[0];
 	var.Printf("%s%s",prefix.c_str(),VAR_EOL);
 	tmp="";
-	wxGetEnv(var,&tmp);
+	myWXGetEnv(var,&tmp);
 	if (tmp.c_str()[0]=='\0')
 		eol=DEF_EOL;
 	else

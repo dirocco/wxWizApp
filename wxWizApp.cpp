@@ -301,7 +301,7 @@ wxString wxWizApp::CreateShScript()
 	wxString output="#!/bin/sh\n\n";
 
 	wxString prefix;
-	if (wxGetEnv(VAR_PREFIX, &prefix) == 0)
+	if (myWXGetEnv(VAR_PREFIX, &prefix) == 0)
 		prefix = DEF_PREFIX;
 	wxString var;
 	var.Printf("%s%s",prefix.c_str(),VAR_OUTPUT);
@@ -325,7 +325,7 @@ wxString wxWizApp::CreateDosScript()
 		wxString output="";
 
 		wxString prefix;
-		if (wxGetEnv(VAR_PREFIX, &prefix) == 0)
+		if (myWXGetEnv(VAR_PREFIX, &prefix) == 0)
 			prefix = DEF_PREFIX;
 		wxString var;
 		var.Printf("%s%s",prefix.c_str(),VAR_OUTPUT);
