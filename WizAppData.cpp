@@ -36,12 +36,8 @@ bool myWXGetEnv(const wxString& var, wxString *value)
 	if(value)
 		*value = p;
 
-	fprintf(stderr, "Looking for <s> got <%s>\n", 
-			(char *)p);
-			// (char *)var, 
-
 	// return(0 != p);
-	return(true);
+	return(true); // XXX shouldn't this be conditional?
 }
 
 
